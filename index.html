@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090812" />
+  <title>MONARCH SYSTEM | Player Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#10091f">
+
+<meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">♛</span><span>MONARCH <small>SYSTEM</small></span></a>
+    <div class="system-status"><span class="pulse"></span> SYSTEM ONLINE</div>
+  </header>
+
+  <main class="layout">
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">PLAYER IDENTIFICATION</p>
+        <h1>WELCOME BACK,<br><span id="playerName">PLAYER</span></h1>
+        <p class="muted">Your only competition is who you were yesterday.</p>
+        <button class="outline-btn" id="editNameBtn">EDIT PLAYER NAME</button>
+      </div>
+      <div class="hero-emblem" aria-hidden="true"><div class="emblem-ring">M</div></div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="panel stat-card">
+        <span class="stat-label">CURRENT LEVEL</span>
+        <strong class="stat-value" id="levelValue">1</strong>
+        <span class="stat-foot">Keep evolving</span>
+      </article>
+      <article class="panel stat-card">
+        <span class="stat-label">TOTAL EXPERIENCE</span>
+        <strong class="stat-value"><span id="totalXp">0</span><small> XP</small></strong>
+        <span class="stat-foot">Lifetime earned</span>
+      </article>
+      <article class="panel stat-card">
+        <span class="stat-label">CURRENT STREAK</span>
+        <strong class="stat-value"><span id="streakValue">0</span><small> DAYS</small></strong>
+        <span class="stat-foot">One day at a time</span>
+      </article>
+    </section>
+
+    <section class="panel xp-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">PLAYER PROGRESSION</p><h2>EXPERIENCE BAR</h2></div>
+        <span class="level-tag" id="xpLabel">0 / 100 XP</span>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="xpFill"></div></div>
+      <p class="muted small" id="xpHint">100 XP required to reach the next level.</p>
+    </section>
+
+    <section class="panel quests-panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">DAILY MISSION</p><h2>YOUR QUESTS</h2></div>
+        <span class="date-chip" id="todayDate"></span>
+      </div>
+      <div class="daily-progress">
+        <div><strong id="completedCount">0/0</strong><span class="muted"> quests completed</span></div>
+        <strong id="progressPercent">0%</strong>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="dailyProgressFill"></div></div>
+      <div id="questList" class="quest-list"></div>
+      <button class="add-btn" id="addQuestBtn">＋ ADD NEW QUEST</button>
+    </section>
+
+    <section class="panel system-message">
+      <div class="message-icon">⚡</div>
+      <div><p class="eyebrow">SYSTEM MESSAGE</p><h3 id="systemMessage">Your journey begins now.</h3><p class="muted small">Small actions. Consistent progress. Unstoppable growth.</p></div>
+    </section>
+
+    <footer>MONARCH SYSTEM <span>•</span> BUILD YOUR OWN LEGEND</footer>
+  </main>
+
+  <dialog id="questDialog">
+    <form method="dialog" id="questForm">
+      <p class="eyebrow">NEW DAILY MISSION</p>
+      <h2>CREATE QUEST</h2>
+      <label for="questName">Quest name</label>
+      <input id="questName" maxlength="40" placeholder="e.g. Practice Java for 45 min" required />
+      <label for="questXp">XP reward</label>
+      <select id="questXp">
+        <option value="10">10 XP — Easy</option>
+        <option value="20" selected>20 XP — Normal</option>
+        <option value="30">30 XP — Hard</option>
+        <option value="50">50 XP — Elite</option>
+      </select>
+      <div class="dialog-actions">
+        <button class="outline-btn" value="cancel">CANCEL</button>
+        <button class="primary-btn" id="saveQuestBtn" value="default">CREATE QUEST</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+  
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .then(() => console.log("MONARCH SYSTEM is ready!"))
+        .catch((error) =>
+          console.error("Service Worker Error:", error)
+        );
+    });
+  }
+</script>
+</body>
+</html>
