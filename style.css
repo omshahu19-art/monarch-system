@@ -104,4 +104,24 @@ input:focus,select:focus { border-color: var(--purple); box-shadow: 0 0 12px rgb
   .quest-name { font-size: 15px; }
   .system-status { font-size: 8px; }
 }
+.app-footer {
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 40px;
+  border-top: 1px solid #7545b8;
+  color: #aaa0bd;
+}
+
+.app-footer h3 {
+  color: #bd8cff;
+  font-size: 20px;
+  letter-spacing: 4px;
+  margin: 8px 0;
+  text-shadow: 0 0 12px #8b45ff;
+}
+
+.app-footer small {
+  color: #777;
+  font-size: 11px;
+}
 @media (max-width: 390px) { .hero-emblem { display: none; } .stats-grid { grid-template-columns: 1fr 1fr 1fr; } }
